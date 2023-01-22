@@ -6,7 +6,7 @@ import { createAListMarkup } from './js/render-img-markup';
 const imageApiService = new ImageApiService();
 
 const searchForm = document.querySelector('.search-form');
-const galleryList = document.querySelector('.gallery');
+const galleryList = document.querySelector('.gallery-block');
 const loadMorebtn = document.querySelector('.load-more');
 searchForm.addEventListener('submit', onSearch);
 loadMorebtn.addEventListener('click', onLoadMore);
