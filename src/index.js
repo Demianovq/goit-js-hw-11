@@ -1,4 +1,4 @@
-import './css/styles.css';
+import './sass/index.scss';
 import axios from 'axios';
 import ImageApiService from './js/api-fetch-class';
 import { createAListMarkup } from './js/render-img-markup';
@@ -20,7 +20,7 @@ function onSearch(evt) {
     .then(resp => {
       console.log(resp);
       clearPictureContainer();
-      galleryList.insertAdjacentHTML('beforeend', createAListMarkup(resp));
+      appendAMarkup(resp);
     })
     .catch(err => console.log(err));
 }
@@ -29,9 +29,13 @@ function onLoadMore() {
   imageApiService
     .fetchImg()
     .then(resp => {
-      galleryList.insertAdjacentHTML('beforeend', createAListMarkup(resp));
+      appendAMarkup(resp);
     })
     .catch(err => console.log(err));
+}
+
+function appendAMarkup(arrOfImgData) {
+  galleryList.insertAdjacentHTML('beforeend', createAListMarkup(arrOfImgData));
 }
 
 function clearPictureContainer() {
