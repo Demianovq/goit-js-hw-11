@@ -11,7 +11,9 @@ function createAListMarkup(arr) {
         downloads,
       }) => `
         <div class="photo-card">
-  <img src="${webformatURL}" alt="${tags}" width="383" heigth="255" loading="lazy" />
+        <a href="${largeImageURL}">
+        <img src="${webformatURL}" data-source="${largeImageURL}" alt="${tags}" width="383" heigth="255" loading="lazy" />
+        </a>
   <div class="info">
     <p class="info-item">
       <b>Likes: ${likes}</b>

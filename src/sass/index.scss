@@ -15,8 +15,11 @@
   padding-top: 10px;
 }
 
-.search-form__input {
+.search-form {
   position: relative;
+}
+
+.search-form__input {
   border: 1px solid rgba(255, 255, 255, 0.3);
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
@@ -35,8 +38,9 @@
 
 .search-form__btn {
   position: absolute;
-  right: 40%;
-
+  left: 93%;
+  top: 52%;
+  transform: translate(-50%, -50%);
   background-color: inherit;
   border: none;
   padding: 10 10;
@@ -51,4 +55,16 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
+}
+
+.load-more {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: cornflowerblue;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 7%;
+  padding: 10px 20px;
 }

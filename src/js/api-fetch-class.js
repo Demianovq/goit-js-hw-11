@@ -20,6 +20,7 @@ export default class ImageApiService {
     };
 
     const response = await axios.get(BASE_URL, { params });
+
     this.updatePage();
 
     const {
