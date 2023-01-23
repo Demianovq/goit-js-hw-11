@@ -59,6 +59,7 @@ function clearPictureContainer() {
 }
 
 function sendAMessageForClient(value) {
+  console.log(value);
   if (value > 0) {
     Notiflix.Notify.success(`Hooray! We found ${value} images.`);
   }
@@ -67,5 +68,8 @@ function sendAMessageForClient(value) {
       `Sorry, there are no images matching your search query. Please try again.`
     );
   }
-  Notiflix.Notify.failure('Please enter somthing to search!');
+  if (value === undefined) {
+    Notiflix.Notify.failure('Please enter something to search!');
+    return;
+  }
 }
