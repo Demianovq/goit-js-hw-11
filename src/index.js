@@ -34,7 +34,7 @@ function onSearch(evt) {
     .then(resp => {
       sendAMessageForClient(resp.data.totalHits);
       clearPictureContainer();
-
+      showALoadMoreBtn();
       if (resp.data.totalHits / resp.page < resp.per_page) {
         hideALoadMoreBtn();
       }
@@ -80,9 +80,9 @@ function sendAMessageForClient(value) {
     return;
   }
 
-  if (value > 20) {
-    showALoadMoreBtn();
-  }
+  // if (value > 20) {
+  //   showALoadMoreBtn();
+  // }
 }
 
 function showALoadMoreBtn() {
