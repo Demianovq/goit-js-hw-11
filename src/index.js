@@ -34,11 +34,11 @@ function onSearch(evt) {
     .then(resp => {
       sendAMessageForClient(resp.data.totalHits);
       clearPictureContainer();
+      appendAMarkup(resp);
       showALoadMoreBtn();
       if (resp.data.totalHits / resp.page < resp.per_page) {
         hideALoadMoreBtn();
       }
-      appendAMarkup(resp);
     })
     .catch(err => console.log(err));
 }
@@ -79,10 +79,6 @@ function sendAMessageForClient(value) {
     Notiflix.Notify.failure('Please enter something to search!');
     return;
   }
-
-  // if (value > 20) {
-  //   showALoadMoreBtn();
-  // }
 }
 
 function showALoadMoreBtn() {
