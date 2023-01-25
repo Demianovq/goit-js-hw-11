@@ -50,7 +50,7 @@ function onLoadMore() {
       appendAMarkup(resp);
       addScroll();
 
-      if (resp.data.totalHits / resp.page < 40) {
+      if (resp.data.totalHits / resp.page < resp.per_page) {
         hideALoadMoreBtn();
       }
     })
