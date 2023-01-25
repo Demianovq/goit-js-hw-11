@@ -35,7 +35,7 @@ function onSearch(evt) {
       sendAMessageForClient(resp.data.totalHits);
       clearPictureContainer();
 
-      if (resp.data.totalHits / resp.page < 40) {
+      if (resp.data.totalHits / resp.page < resp.per_page) {
         hideALoadMoreBtn();
       }
       appendAMarkup(resp);

@@ -30,7 +30,7 @@ export default class ImageApiService {
       },
     } = response;
 
-    return { data, page };
+    return { data, page, per_page };
   }
 
   updatePage() {
