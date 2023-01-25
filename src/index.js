@@ -1,15 +1,17 @@
 import './sass/index.scss';
-import axios from 'axios';
 import ImageApiService from './js/api-fetch-class';
 import { createAListMarkup } from './js/render-img-markup';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import addScroll from './js/add-scroll';
 
 const imageApiService = new ImageApiService();
 const searchForm = document.querySelector('.search-form');
 const galleryList = document.querySelector('.gallery-block');
-const loadMorebtn = document.querySelector('.load-more');
+const loadMorebtn = document.querySelector('.load-more-btn');
+loadMorebtn.disabled = true;
+loadMorebtn.classList.add('is-hidden');
 searchForm.addEventListener('submit', onSearch);
 loadMorebtn.addEventListener('click', onLoadMore);
 
@@ -32,10 +34,11 @@ function onSearch(evt) {
     .then(resp => {
       sendAMessageForClient(resp.data.totalHits);
       clearPictureContainer();
-      appendAMarkup(resp);
-      if (resp.page > 1) {
-        smothScroll();
+
+      if (resp.data.totalHits / resp.page < 40) {
+        hideALoadMoreBtn();
       }
+      appendAMarkup(resp);
     })
     .catch(err => console.log(err));
 }
@@ -45,6 +48,11 @@ function onLoadMore() {
     .fetchImg()
     .then(resp => {
       appendAMarkup(resp);
+      addScroll();
+
+      if (resp.data.totalHits / resp.page < 40) {
+        hideALoadMoreBtn();
+      }
     })
     .catch(err => console.log(err));
 }
@@ -59,7 +67,6 @@ function clearPictureContainer() {
 }
 
 function sendAMessageForClient(value) {
-  console.log(value);
   if (value > 0) {
     Notiflix.Notify.success(`Hooray! We found ${value} images.`);
   }
@@ -72,4 +79,18 @@ function sendAMessageForClient(value) {
     Notiflix.Notify.failure('Please enter something to search!');
     return;
   }
+
+  if (value > 20) {
+    showALoadMoreBtn();
+  }
+}
+
+function showALoadMoreBtn() {
+  loadMorebtn.disabled = false;
+  loadMorebtn.classList.remove('is-hidden');
+}
+
+function hideALoadMoreBtn() {
+  loadMorebtn.disabled = true;
+  loadMorebtn.classList.add('is-hidden');
 }

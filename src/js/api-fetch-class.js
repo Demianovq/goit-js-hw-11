@@ -26,7 +26,7 @@ export default class ImageApiService {
     const {
       data,
       config: {
-        params: { page },
+        params: { per_page, page },
       },
     } = response;
 
