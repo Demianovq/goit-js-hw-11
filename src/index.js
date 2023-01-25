@@ -1,10 +1,10 @@
 import './sass/index.scss';
+import addScroll from './js/add-scroll';
 import ImageApiService from './js/api-fetch-class';
 import { createAListMarkup } from './js/render-img-markup';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import addScroll from './js/add-scroll';
 
 const imageApiService = new ImageApiService();
 const searchForm = document.querySelector('.search-form');
