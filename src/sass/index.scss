@@ -36,7 +36,7 @@
   outline: none;
 }
 
-.search-form__btn {
+.search-btn {
   position: absolute;
   left: 93%;
   top: 52%;
@@ -44,6 +44,10 @@
   background-color: inherit;
   border: none;
   padding: 10 10;
+}
+
+.search-btn__icon:hover {
+  transform: scale(1.1);
 }
 
 .gallery-block {
