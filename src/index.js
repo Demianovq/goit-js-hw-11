@@ -38,6 +38,7 @@ function onSearch(evt) {
       showALoadMoreBtn();
       if (resp.data.totalHits / resp.page < resp.per_page) {
         hideALoadMoreBtn();
+        sendAMessageForClient('end');
       }
     })
     .catch(err => console.log(err));
@@ -52,6 +53,7 @@ function onLoadMore() {
 
       if (resp.data.totalHits / resp.page < resp.per_page) {
         hideALoadMoreBtn();
+        sendAMessageForClient('end');
       }
     })
     .catch(err => console.log(err));
@@ -78,6 +80,11 @@ function sendAMessageForClient(value) {
   if (value === undefined) {
     Notiflix.Notify.failure('Please enter something to search!');
     return;
+  }
+  if (value === 'end') {
+    Notiflix.Notify.failure(
+      "We're sorry, but you've reached the end of search results."
+    );
   }
 }
 
